@@ -1,0 +1,36 @@
+speakeasyVersion: 1.455.3
+sources:
+    petstore-oas:
+        sourceNamespace: petstore-oas
+        sourceRevisionDigest: sha256:762394c7a908ced223b97fb944a11a94313a8f508dc0a7ecd3f9fce4079964bb
+        sourceBlobDigest: sha256:e8a494e40efa811a3750cded408b93f857ddb21b1fbcf230c4abfff16f8b9640
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    petstore:
+        source: petstore-oas
+        sourceNamespace: petstore-oas
+        sourceRevisionDigest: sha256:762394c7a908ced223b97fb944a11a94313a8f508dc0a7ecd3f9fce4079964bb
+        sourceBlobDigest: sha256:e8a494e40efa811a3750cded408b93f857ddb21b1fbcf230c4abfff16f8b9640
+        codeSamplesNamespace: petstore-oas-python-code-samples
+        codeSamplesRevisionDigest: sha256:4b645b77723a2837562e3b0c4b406c5ab22b6441fd811320fe9fd1e44756a0b0
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        petstore-oas:
+            inputs:
+                - location: openapi.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/thymos/workspace/petstore-oas
+    targets:
+        petstore:
+            target: python
+            source: petstore-oas
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/thymos/workspace/petstore-oas-python-code-samples
+                blocking: false

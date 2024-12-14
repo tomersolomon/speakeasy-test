@@ -1,0 +1,18 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    petstore-oas:
+        inputs:
+            - location: openapi.yaml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        registry:
+            location: registry.speakeasyapi.dev/thymos/workspace/petstore-oas
+targets:
+    petstore:
+        target: python
+        source: petstore-oas
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/thymos/workspace/petstore-oas-python-code-samples
+            blocking: false
